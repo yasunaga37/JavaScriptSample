@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+  'use strict';
+
+  let arr = [1,2,3,4,5,6,7,8,9];
+  let i = arr.length;
+
+  //シャッフルアルゴリズム
+  // https://www.sejuku.net/blog/22432
+  // Fisher–Yates shuffleアルゴリズム
+  while (i) {
+    let j = Math.floor(Math.random() * i);
+    let tmp = arr[--i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+  }
+
+  //シャッフルされた配列の要素を順番に表示する
+  arr.forEach( function( value ) {console.log( value )} );
+</script>
+</body>
+</html>
