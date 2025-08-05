@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>カウントダウンタイマー</h1>
+<h2>残り時間を計算するファンクションを作る</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	<p>いまから<span id="timer"></span>以内に注文すると50%オフ！</p>
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+  'use strict';
+
+  let goal = new Date();
+  goal.setHours(23);
+  goal.setMinutes(59);
+  goal.setSeconds(59);
+  recalc();
+
+  function recalc() {
+    console.log(countdown(goal));
+    const counter = countdown(goal);
+    const time = `${counter[1]}時間${counter[2]}分${counter[3]}秒`;
+    document.getElementById('timer').textContent = time;
+    refresh();
+  }
+
+  function refresh() {
+    setTimeout(recalc, 1000);
+  }
+
+  function countdown(due) {
+    const now = new Date();
+
+    const rest = due.getTime() - now.getTime();
+    const sec = Math.floor(rest / 1000) % 60;
+    const min = Math.floor(rest / 1000 / 60) % 60;
+    const hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+    const days = Math.floor(rest / 1000 / 60 / 60 / 24);
+    const count = [days, hours, min, sec];
+
+    return count;
+  }
+</script>
+</body>
+</html>
